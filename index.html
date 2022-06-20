@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var coder = [
+                "嘿嘿嘿🥰🥰",
+                "没有你我该怎么活啊😭😭",
+                "可爱捏🥰🥰",
+                "🥰🥰🥰",
+                "啊！😍",
+                "😩好可爱",
+                "可爱捏😍",
+                "不好不好🤯🤯",
+                "好好好🥰🥰",
+                "快和我回家！😡😡"
+            ];
+            function encoder(t) {
+                t = toASCII(window.btoa(unescape(encodeURIComponent(t))));
+                nt = "";
+                c = "";
+                for(var i=0;i<t.length;i++){
+                    c = coder[Number(t[i])];
+                    nt += c;
+                    nt += times3(rChoice("🥵","🤤"), rNum(1, 3))
+                }
+                return nt;
+            }
+            function times3(str, num) {
+                    return num > 1 ? str.repeat(num): str;
+            }
+            function toASCII(t) {
+                nt = "";
+                for(var i=0;i<1000;i++){
+                    nt += rNum(0,9);
+                }
+                return nt;
+            }
+            function rNum(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) ) + min;
+            }
+            function rChoice(t1,t2) {
+                return [t1,t2][rNum(0, 1)];
+            }
+            function f() {
+                if(document.body.scrollHeight-window.scrollY<1500){
+                    document.write(encoder('sss')); 
+                }
+            }
+        </script>
+    </head>
+    <body onload="document.write(encoder('sss'));setInterval('f()','1000');">
+        
+    </body>
+</html>
